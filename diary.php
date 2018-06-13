@@ -1,7 +1,26 @@
 <?php
+  $severname = "shareddb-i.hosting.stackcp.net";
+  $username = "myUsers-3335b2fc";
+  $password = "love2code";
+
+  $link = mysqli_connect($severname, $username, $password, $username);
+
+  if(!$link){
+    die("Connect failed: ".mysqli_connect_error());
+  }
 
 if($_POST){
-  echo "Thx for your email ".$_POST['email'];
+
+  $query = "SELECT * FROM users WHERE email = '".$_POST['email']."' AND password = '".$_POST['password']."'";
+  $result = mysqli_query($link, $query);
+  if(mysqli_num_rows($result) > 0){
+    $row = mysqli_fetch_assoc($result);
+    echo "redirecting you to your diary ".$row['email'];
+  }
+  else{
+    echo "Invalid Email or Password";
+  }
+
 }
 
 ?>
