@@ -1,7 +1,7 @@
 <?php
   $severname = "shareddb-i.hosting.stackcp.net";
   $username = "myUsers-3335b2fc";
-  $password = "love2code";
+
 
   $link = mysqli_connect($severname, $username, $password, $username);
 
